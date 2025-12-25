@@ -37,7 +37,7 @@ export default function Home() {
 
   // App State
   const [topic, setTopic] = useState("");
-  const [interest, setInterest] = useState(""); 
+  const [interest, setInterest] = useState("");
   const [result, setResult] = useState<any>(null);
   const [loadingStep, setLoadingStep] = useState("Init");
   const splineRef = useRef<any>(null);
@@ -120,7 +120,7 @@ export default function Home() {
         setUsername("");
         setEmail("");
         setPassword("");
-        
+
         const signInResult = await signIn("credentials", {
           email,
           password,
@@ -422,7 +422,6 @@ export default function Home() {
                     </>
                   )}
                 </div>
-
               </div>
             </motion.div>
           )}
@@ -475,39 +474,53 @@ export default function Home() {
 
                 {/* Generate Button */}
                 <div className="flex justify-center z-20 pointer-events-auto">
-                    <button
-                      onClick={handleGenerate}
-                      disabled={loading || !topic || !interest}
-                      className="relative group w-20 h-20 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:scale-100 shadow-[0_0_40px_-10px_rgba(59,130,246,0.35)] hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.45)]"
-                    >
-                      {loading ? (
-                        <div className="relative w-14 h-14 rounded-full bg-black/80 border border-white/15 flex items-end justify-center gap-[6px] overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/25 via-cyan-400/25 to-purple-500/25 blur-2xl" />
-                          {["from-blue-400 via-cyan-300 to-white", "from-purple-400 via-pink-300 to-white", "from-cyan-400 via-emerald-300 to-white", "from-indigo-400 via-blue-300 to-white"].map((gradient, idx) => (
-                            <motion.span
-                              key={gradient}
-                              className={`relative w-[4px] h-10 rounded-full bg-gradient-to-b ${gradient} shadow-[0_0_20px_rgba(56,189,248,0.35)]`}
-                              animate={{ scaleY: [0.5, 1.25, 0.5], y: [2, -3, 2], opacity: [0.7, 1, 0.7] }}
-                              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.18 }}
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <Zap className="w-8 h-8 fill-black" />
-                      )}
-                    </button>
-                    <div className="min-h-6 flex items-center justify-center">
-                      {loading && (
-                        <motion.p
-                          key={loadingStep}
-                          initial={{ opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-[10px] font-mono text-blue-200 tracking-[0.2em] uppercase text-center"
-                        >
-                          {loadingStep}
-                        </motion.p>
-                      )}
-                    </div>
+                  <button
+                    onClick={handleGenerate}
+                    disabled={loading || !topic || !interest}
+                    className="relative group w-20 h-20 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:scale-100 shadow-[0_0_40px_-10px_rgba(59,130,246,0.35)] hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.45)]"
+                  >
+                    {loading ? (
+                      <div className="relative w-14 h-14 rounded-full bg-black/80 border border-white/15 flex items-end justify-center gap-[6px] overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/25 via-cyan-400/25 to-purple-500/25 blur-2xl" />
+                        {[
+                          "from-blue-400 via-cyan-300 to-white",
+                          "from-purple-400 via-pink-300 to-white",
+                          "from-cyan-400 via-emerald-300 to-white",
+                          "from-indigo-400 via-blue-300 to-white",
+                        ].map((gradient, idx) => (
+                          <motion.span
+                            key={gradient}
+                            className={`relative w-[4px] h-10 rounded-full bg-gradient-to-b ${gradient} shadow-[0_0_20px_rgba(56,189,248,0.35)]`}
+                            animate={{
+                              scaleY: [0.5, 1.25, 0.5],
+                              y: [2, -3, 2],
+                              opacity: [0.7, 1, 0.7],
+                            }}
+                            transition={{
+                              duration: 1.4,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: idx * 0.18,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <Zap className="w-8 h-8 fill-black" />
+                    )}
+                  </button>
+                  <div className="min-h-6 flex items-center justify-center">
+                    {loading && (
+                      <motion.p
+                        key={loadingStep}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-[10px] font-mono text-blue-200 tracking-[0.2em] uppercase text-center"
+                      >
+                        {loadingStep}
+                      </motion.p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Interest Card */}
@@ -547,7 +560,8 @@ export default function Home() {
                       <div className="bg-green-500/20 border border-green-500/50 px-3 py-1 rounded-full flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-xs font-mono text-green-400 uppercase">
-                          Critic Verified: {result?.raw_mapping?.confidence_score || "99.8%"}
+                          Critic Verified:{" "}
+                          {result?.raw_mapping?.confidence_score || "99.8%"}
                         </span>
                       </div>
                     </div>
@@ -569,9 +583,9 @@ export default function Home() {
             </motion.div>
           )}
         </AnimatePresence>
-          </div>
+      </div>
 
-          <Footer />
-        </main>
+      <Footer />
+    </main>
   );
 }
