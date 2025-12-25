@@ -20,6 +20,14 @@ import {
 
 type View = "LANDING" | "AUTH" | "APP" | "SIGN_UP";
 
+// Quick-start suggestions for topics and interests
+const SUGGESTIONS = [
+  { topic: "Quantum Physics", interest: "Cricket" },
+  { topic: "Photosynthesis", interest: "Cooking" },
+  { topic: "Blockchain", interest: "Football" },
+  { topic: "Neural Networks", interest: "Marvel Movies" },
+];
+
 export default function Home() {
   // Hooks
   const { data: session, status } = useSession();
@@ -541,6 +549,23 @@ export default function Home() {
                   />
                 </div>
               </motion.div>
+
+              {/* SUGGESTION PILLS */}
+              <div className="mt-4 flex flex-wrap gap-2 justify-center pointer-events-auto">
+                <p className="w-full text-sm text-gray-400 mb-1">Stuck? Try a quick fuse:</p>
+                {SUGGESTIONS.map((s, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setTopic(s.topic);
+                      setInterest(s.interest);
+                    }}
+                    className="px-3 py-1 text-xs rounded-full border border-white/10 bg-white/5 hover:bg-white/20 transition-all text-gray-300"
+                  >
+                    {s.topic} + {s.interest}
+                  </button>
+                ))}
+              </div>
 
               {/* RESULTS ENGINE */}
               {result && (

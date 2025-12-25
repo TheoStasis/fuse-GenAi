@@ -1,8 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fuse App
+
+A Next.js application with authentication, email verification, and AI-powered features using Google's Generative AI.
+
+## Features
+
+- 🔐 **Authentication**: NextAuth.js with credential-based authentication
+- 📧 **Email Verification**: Resend integration for verification emails
+- 🤖 **AI Integration**: Google Generative AI for content generation
+- 🎨 **Modern UI**: Tailwind CSS with Framer Motion animations
+- 🗄️ **Database**: MongoDB with Mongoose ODM
+- 📱 **Responsive Design**: Mobile-friendly interface
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+- MongoDB database (local or cloud instance)
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# MongoDB
+MONGODB_URI=your_mongodb_connection_string
+
+# NextAuth
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Resend (Email Service)
+RESEND_API_KEY=your_resend_api_key
+
+# Google Generative AI
+GOOGLE_API_KEY=your_google_ai_api_key
+```
+
+### How to Get API Keys
+
+1. **MongoDB URI**: Sign up at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create a free cluster
+2. **NextAuth Secret**: Generate with `openssl rand -base64 32` or any random string generator
+3. **Resend API Key**: Sign up at [Resend](https://resend.com) and get your API key
+4. **Google AI API Key**: Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
+
+```bash
+git clone <repository-url>
+cd fuse-app
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. **Set up environment variables**
+
+Create a `.env.local` file and add the required environment variables (see above).
+
+4. **Run the development server**
 
 ```bash
 npm run dev
@@ -14,23 +81,69 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. **Open your browser**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
+
+```
+fuse-app/
+├── app/                      # Next.js app directory
+│   ├── api/                  # API routes
+│   │   ├── auth/            # NextAuth configuration
+│   │   ├── generate/        # AI generation endpoint
+│   │   ├── history/         # User history endpoint
+│   │   └── sign-up/         # User registration endpoint
+│   ├── components/          # React components
+│   ├── helpers/             # Utility functions
+│   ├── history/             # History page
+│   └── models/              # Frontend data models
+├── context/                 # React context providers
+├── email/                   # Email templates
+├── lib/                     # Library configurations
+│   ├── dbConnect.ts        # MongoDB connection
+│   └── resend.ts           # Resend email config
+├── models/                  # Mongoose models
+├── schemas/                 # Zod validation schemas
+└── types/                   # TypeScript type definitions
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Key Features Explanation
+
+### Authentication Flow
+1. User signs up with username, email, and password
+2. Verification code is sent via email using Resend
+3. User verifies email with OTP code
+4. User can then sign in using NextAuth
+
+### Email Verification
+The app uses Resend to send verification emails. The email template is located in `email/index.tsx` and can be customized as needed.
+
+### AI Generation
+The `/api/generate` endpoint uses Google's Generative AI to create content based on user input.
+
+## Database Models
+
+- **User**: Stores user credentials, verification status, and metadata
+- **History**: Tracks user's generation history
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js](https://nextjs.org/docs) - React framework
+- [NextAuth.js](https://next-auth.js.org/) - Authentication
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Mongoose](https://mongoosejs.com/) - ODM
+- [Resend](https://resend.com/) - Email service
+- [Google Generative AI](https://ai.google.dev/) - AI integration
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
