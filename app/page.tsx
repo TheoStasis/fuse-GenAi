@@ -280,8 +280,8 @@ export default function Home() {
                     {view === "AUTH" ? "Welcome Back" : "Create Account"}
                   </h2>
                   <p className="text-gray-400">
-                    {view === "AUTH"
-                      ? "Sign in to continue your learning journey"
+                    {view === "AUTH" 
+                      ? "Sign in to continue your learning journey" 
                       : "Join us and start learning smarter"}
                   </p>
                 </div>
@@ -346,25 +346,16 @@ export default function Home() {
                 {/* Submit Button */}
                 <button
                   onClick={view === "AUTH" ? handleSignIn : handleSignUp}
-                  disabled={
-                    loading ||
-                    (view === "AUTH"
-                      ? !email || !password
-                      : !username || !email || !password)
-                  }
+                  disabled={loading || (view === "AUTH" ? !email || !password : !username || !email || !password)}
                   className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-4 rounded-xl hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all disabled:opacity-50 disabled:cursor-not-allowed mb-4 flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      {view === "AUTH"
-                        ? "Signing in..."
-                        : "Creating account..."}
+                      {view === "AUTH" ? "Signing in..." : "Creating account..."}
                     </>
-                  ) : view === "AUTH" ? (
-                    "Sign In"
                   ) : (
-                    "Create Account"
+                    view === "AUTH" ? "Sign In" : "Create Account"
                   )}
                 </button>
 
