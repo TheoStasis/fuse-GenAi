@@ -1,4 +1,4 @@
-# Fuse App
+# Fuse App -   🏆 GenAI Hackathon 2025: Top 30 Finalist
 
 A Next.js application with authentication, email verification, and AI-powered features using Google's Generative AI.
 
