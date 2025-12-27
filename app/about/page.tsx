@@ -14,8 +14,8 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#09090B] relative selection:bg-blue-500/30 font-sans">
       {/* Spline Background */}
-      <div className="fixed inset-0 z-0 bg-[#09090B]">
-        <Spline scene="https://prod.spline.design/vGQwr-uT48fPnPpM/scene.splinecode" />
+      <div className="fixed inset-0 z-0 bg-[#09090B] pointer-events-auto">
+        <Spline scene="https://prod.spline.design/nLI1l78fJ4QomYmk/scene.splinecode" />
       </div>
 
       {/* Navbar */}
@@ -24,7 +24,7 @@ export default function AboutPage() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-6 py-20">
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-6 py-20 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

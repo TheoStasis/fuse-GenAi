@@ -203,7 +203,7 @@ export default function Home() {
       {/* ----------------------------------------------------- */}
       <div className="fixed inset-0 z-0 bg-[#09090B] pointer-events-auto">
         <Spline
-          scene="https://prod.spline.design/vGQwr-uT48fPnPpM/scene.splinecode"
+          scene="https://prod.spline.design/nLI1l78fJ4QomYmk/scene.splinecode"
           onLoad={(spline: any) => {
             splineRef.current = spline;
           }}
@@ -485,10 +485,12 @@ export default function Home() {
                   <button
                     onClick={handleGenerate}
                     disabled={loading || !topic || !interest}
-                    className="relative group w-20 h-20 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:scale-100 shadow-[0_0_40px_-10px_rgba(59,130,246,0.35)] hover:shadow-[0_0_60px_-15px_rgba(59,130,246,0.45)]"
+                    className="relative group w-20 h-20 rounded-full bg-white/5 border border-white/15 text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:scale-100 shadow-[0_0_28px_-12px_rgba(59,130,246,0.35)] hover:shadow-[0_0_38px_-10px_rgba(59,130,246,0.5)] backdrop-blur-lg"
                   >
+                    <div className="absolute inset-[-6px] rounded-full bg-gradient-to-r from-blue-500/15 via-cyan-400/10 to-purple-500/15 blur-xl opacity-60 group-hover:opacity-75 transition-opacity" aria-hidden />
+                    <div className="absolute inset-0 rounded-full bg-black/60 border border-white/10" aria-hidden />
                     {loading ? (
-                      <div className="relative w-14 h-14 rounded-full bg-black/80 border border-white/15 flex items-end justify-center gap-[6px] overflow-hidden">
+                      <div className="relative w-14 h-14 rounded-full bg-black/75 border border-white/15 flex items-end justify-center gap-[6px] overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/25 via-cyan-400/25 to-purple-500/25 blur-2xl" />
                         {[
                           "from-blue-400 via-cyan-300 to-white",
@@ -514,7 +516,7 @@ export default function Home() {
                         ))}
                       </div>
                     ) : (
-                      <Zap className="w-8 h-8 fill-black" />
+                      <Zap className="w-8 h-8 fill-white drop-shadow-[0_0_18px_rgba(255,255,255,0.35)]" />
                     )}
                   </button>
                   <div className="min-h-6 flex items-center justify-center">

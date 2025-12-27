@@ -96,9 +96,9 @@ export default function HistoryPage() {
     <main className="min-h-screen bg-[#09090B] relative selection:bg-blue-500/30 font-sans">
       
       {/* Spline Background */}
-      <div className="fixed inset-0 z-0 bg-[#09090B]">
+      <div className="fixed inset-0 z-0 bg-[#09090B] pointer-events-auto">
         <Spline 
-          scene="https://prod.spline.design/vGQwr-uT48fPnPpM/scene.splinecode"
+          scene="https://prod.spline.design/nLI1l78fJ4QomYmk/scene.splinecode"
           onLoad={(spline: any) => {
             setSplineRef(spline);
           }}
@@ -106,7 +106,7 @@ export default function HistoryPage() {
       </div>
 
       {/* UI Layer */}
-      <div className="relative z-10 pt-32 pb-20 px-6 max-w-6xl mx-auto min-h-screen">
+      <div className="relative z-10 pt-32 pb-20 px-6 max-w-6xl mx-auto min-h-screen pointer-events-none">
         
         <div className="pointer-events-auto">
           <Navbar isSignedIn={status === "authenticated"} />
